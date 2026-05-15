@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import logoImg from "../assets/img/logo.webp"; // Asegúrate de tener esta imagen
+import logoImg = from "../assets/img/logo.webp"; // Asegúrate de tener esta imagen
+
 // Definimos los links para facilitar el mantenimiento
 const navLinks = [
   { name: "Inicio", href: `${import.meta.env.BASE_URL}/` },
@@ -16,9 +17,10 @@ import Button from "./Button.astro"; // Reutilizamos tu botón anterior
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      <!-- Solo cambia esta parte dentro del header -->
+      
       <div class="flex-shrink-0 flex items-center">
-        <a href="{`${import.meta.env.BASE_URL}/" class="group flex items-center gap-2">
+        <!--  CORREGIDO: Llaves y comillas invertidas bien estructuradas -->
+        <a href={`${import.meta.env.BASE_URL}/`} class="group flex items-center gap-2">
           <!-- Mantenemos tu cuadrito verde exacto -->
           <div
             class="w-10 h-10 bg-[var(--color-primary)] rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 overflow-hidden p-1.5"
