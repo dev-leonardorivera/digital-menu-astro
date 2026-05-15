@@ -10,7 +10,7 @@ Diseñado como un proyecto frontend real y parte de mi portfolio público como d
 
 ## 🚀 Demo Online
 
-[![Live Demo](https://img.shields.io/badge/Ver-Demo-success?style=for-the-badge)](https://TU-USUARIO.github.io/TU-REPOSITORIO/)
+[![Live Demo](https://img.shields.io/badge/Ver-Demo-success?style=for-the-badge)]([https://TU-USUARIO.github.io/TU-REPOSITORIO/](https://dev-leonardorivera.github.io/digital-menu-astro/))
 
 🔗 URL Demo:  
 https://TU-USUARIO.github.io/TU-REPOSITORIO/
