@@ -3,12 +3,11 @@ import { Image } from "astro:assets";
 import logoImg from "../assets/img/logo.webp"; // Asegúrate de tener esta imagen
 // Definimos los links para facilitar el mantenimiento
 const navLinks = [
-  { name: "Inicio", href: "{`${import.meta.env.BASE_URL}" },
-  { name: "Menú", href: "{`${import.meta.env.BASE_URL}/menu" },
-  { name: "Nosotros", href: "{`${import.meta.env.BASE_URL}/nosotros" },
-  { name: "Contacto", href: "{`${import.meta.env.BASE_URL}/contacto" },
+  { name: "Inicio", href: `${import.meta.env.BASE_URL}/` },
+  { name: "Menú", href: `${import.meta.env.BASE_URL}/menu/` },
+  { name: "Nosotros", href: `${import.meta.env.BASE_URL}/nosotros/` },
+  { name: "Contacto", href: `${import.meta.env.BASE_URL}/contacto/` },
 ];
-
 import Button from "./Button.astro"; // Reutilizamos tu botón anterior
 ---
 
