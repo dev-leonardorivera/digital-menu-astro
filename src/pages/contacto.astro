@@ -1,101 +1,179 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Location from '../components/Location.astro';
+import Layout from "../layouts/Layout.astro";
+import Location from "../components/Location.astro";
 import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Contacto | Nuestra Cafetería">
   <main class="bg-[var(--color-primary-dark)] pt-24">
-    
     <!-- Hero Section -->
     <section class="px-6 py-16 max-w-7xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter">Hablemos sobre <span class="text-[var(--color-primary-light)]">café</span>.</h1>
+      <h1
+        class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter"
+      >
+        Hablemos sobre <span class="text-[var(--color-primary-light)]"
+          >café</span
+        >.
+      </h1>
       <p class="text-white/70 max-w-2xl mx-auto text-lg">
-        ¿Tienes una duda, quieres reservar para un evento o simplemente saludarnos? Estamos al otro lado de la taza.
+        ¿Tienes una duda, quieres reservar para un evento o simplemente
+        saludarnos? Estamos al otro lado de la taza.
       </p>
     </section>
 
     <section class="px-6 pb-24 max-w-7xl mx-auto">
-  <!-- Cambio a items-stretch para igualar alturas -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
-    
-    <!-- Columna 1: Canales Directos (Ahora con h-full y flex para estirar) -->
-    <div class="flex flex-col justify-between h-full space-y-12">
-      <div>
-        <h3 class="text-[var(--color-primary-light)] font-bold uppercase text-xs tracking-[0.3em] mb-8">Contacto Directo</h3>
-        <div class="grid gap-6">
-          <!-- WhatsApp -->
-          <a href="https://wa.me/34600000000?text=Hola!%20Me%20gustaría%20saber%20más..." target="_blank" class="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-            <Icon name="mdi:whatsapp" class="w-8 h-8 text-green-500" />
-            <div>
-              <p class="text-white font-bold">WhatsApp</p>
-              <p class="text-xs text-white/60">Respuesta rápida: +34 600 000 000</p>
-            </div>
-            <Icon name="mdi:chevron-right" class="ml-auto w-5 h-5 text-white/20 group-hover:translate-x-1 transition-transform" />
-          </a>
+      <!-- Cambio a items-stretch para igualar alturas -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
+        <!-- Columna 1: Canales Directos (Ahora con h-full y flex para estirar) -->
+        <div class="flex flex-col justify-between h-full space-y-12">
+          <div>
+            <h3
+              class="text-[var(--color-primary-light)] font-bold uppercase text-xs tracking-[0.3em] mb-8"
+            >
+              Contacto Directo
+            </h3>
+            <div class="grid gap-6">
+              <!-- WhatsApp -->
+              <a
+                href="https://wa.me/34600000000?text=Hola!%20Me%20gustaría%20saber%20más..."
+                target="_blank"
+                class="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group"
+              >
+                <Icon name="mdi:whatsapp" class="w-8 h-8 text-green-500" />
+                <div>
+                  <p class="text-white font-bold">WhatsApp</p>
+                  <p class="text-xs text-white/60">
+                    Respuesta rápida: +34 600 000 000
+                  </p>
+                </div>
+                <Icon
+                  name="mdi:chevron-right"
+                  class="ml-auto w-5 h-5 text-white/20 group-hover:translate-x-1 transition-transform"
+                />
+              </a>
 
-          <!-- Teléfono -->
-          <a href="tel:+34900000000" class="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-            <Icon name="mdi:phone" class="w-8 h-8 text-[var(--color-primary-light)]" />
-            <div>
-              <p class="text-white font-bold">Llámanos</p>
-              <p class="text-xs text-white/60">+34 900 000 000</p>
+              <!-- Teléfono -->
+              <a
+                href="tel:+34900000000"
+                class="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group"
+              >
+                <Icon
+                  name="mdi:phone"
+                  class="w-8 h-8 text-[var(--color-primary-light)]"
+                />
+                <div>
+                  <p class="text-white font-bold">Llámanos</p>
+                  <p class="text-xs text-white/60">+34 900 000 000</p>
+                </div>
+              </a>
             </div>
-          </a>
+          </div>
+
+          <!-- FAQ Rápida (Se mantiene al fondo gracias al justify-between) -->
+          <div
+            class="p-8 rounded-3xl bg-[var(--color-primary-dark)] border border-[var(--color-primary-light)]/20 shadow-2xl"
+          >
+            <h4 class="text-white font-bold mb-4 italic">Información útil</h4>
+            <ul class="space-y-4 text-sm text-white/80">
+              <li class="flex gap-3">
+                <Icon
+                  name="mdi:check"
+                  class="text-[var(--color-primary-light)] w-5"
+                /> Admitimos mascotas en terraza.
+              </li>
+              <li class="flex gap-3">
+                <Icon
+                  name="mdi:check"
+                  class="text-[var(--color-primary-light)] w-5"
+                /> WiFi de alta velocidad disponible.
+              </li>
+              <li class="flex gap-3">
+                <Icon
+                  name="mdi:check"
+                  class="text-[var(--color-primary-light)] w-5"
+                /> Opciones veganas y sin gluten.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Columna 2: Formulario (Mantiene su diseño) -->
+        <div
+          class="bg-white/5 p-8 md:p-12 rounded-[2rem] border border-white/10 relative overflow-hidden flex flex-col justify-center"
+        >
+          <form action="#" method="POST" class="space-y-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label
+                  class="text-[10px] uppercase tracking-widest text-[var(--color-primary-light)] font-bold pl-2"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-primary-light)] transition-colors"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="text-[10px] uppercase tracking-widest text-[var(--color-primary-light)] font-bold pl-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-primary-light)] transition-colors"
+                  placeholder="hola@email.com"
+                />
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label
+                class="text-[10px] uppercase tracking-widest text-[var(--color-primary-light)] font-bold pl-2"
+                >Mensaje</label
+              >
+              <textarea
+                name="message"
+                rows="4"
+                required
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-primary-light)] transition-colors resize-none"
+                placeholder="¿En qué podemos ayudarte?"></textarea>
+            </div>
+
+            <!-- BLOQUE LEGAL RGPD -->
+            <div class="space-y-4 pt-4">
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  required
+                  class="mt-1 w-4 h-4 rounded border-white/10 bg-white/5 text-[var(--color-primary-light)] focus:ring-0"
+                />
+                <span class="text-[11px] text-white/70 leading-tight">
+                  He leído y acepto la <a
+                    href="privacidad"
+                    class="text-[var(--color-primary-light)] underline hover:text-white transition-colors"
+                    >Política de Privacidad</a
+                  >. *
+                </span>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] font-black uppercase text-xs tracking-[0.2em] py-5 rounded-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl"
+            >
+              Enviar Mensaje
+            </button>
+          </form>
         </div>
       </div>
-
-      <!-- FAQ Rápida (Se mantiene al fondo gracias al justify-between) -->
-      <div class="p-8 rounded-3xl bg-[var(--color-primary-dark)] border border-[var(--color-primary-light)]/20 shadow-2xl">
-        <h4 class="text-white font-bold mb-4 italic">Información útil</h4>
-        <ul class="space-y-4 text-sm text-white/80">
-          <li class="flex gap-3"><Icon name="mdi:check" class="text-[var(--color-primary-light)] w-5" /> Admitimos mascotas en terraza.</li>
-          <li class="flex gap-3"><Icon name="mdi:check" class="text-[var(--color-primary-light)] w-5" /> WiFi de alta velocidad disponible.</li>
-          <li class="flex gap-3"><Icon name="mdi:check" class="text-[var(--color-primary-light)] w-5" /> Opciones veganas y sin gluten.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Columna 2: Formulario (Mantiene su diseño) -->
-    <div class="bg-white/5 p-8 md:p-12 rounded-[2rem] border border-white/10 relative overflow-hidden flex flex-col justify-center">
-      <form action="#" method="POST" class="space-y-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="space-y-2">
-            <label class="text-[10px] uppercase tracking-widest text-[var(--color-primary-light)] font-bold pl-2">Nombre</label>
-            <input type="text" name="name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-primary-light)] transition-colors" placeholder="Tu nombre" />
-          </div>
-          <div class="space-y-2">
-            <label class="text-[10px] uppercase tracking-widest text-[var(--color-primary-light)] font-bold pl-2">Email</label>
-            <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-primary-light)] transition-colors" placeholder="hola@email.com" />
-          </div>
-        </div>
-
-        <div class="space-y-2">
-          <label class="text-[10px] uppercase tracking-widest text-[var(--color-primary-light)] font-bold pl-2">Mensaje</label>
-          <textarea name="message" rows="4" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[var(--color-primary-light)] transition-colors resize-none" placeholder="¿En qué podemos ayudarte?"></textarea>
-        </div>
-
-        <!-- BLOQUE LEGAL RGPD -->
-        <div class="space-y-4 pt-4">
-          <label class="flex items-start gap-3 cursor-pointer group">
-            <input type="checkbox" required class="mt-1 w-4 h-4 rounded border-white/10 bg-white/5 text-[var(--color-primary-light)] focus:ring-0" />
-            <span class="text-[11px] text-white/70 leading-tight">
-              He leído y acepto la <a href="/legal/privacidad" class="text-[var(--color-primary-light)] underline hover:text-white transition-colors">Política de Privacidad</a>. *
-            </span>
-          </label>
-        </div>
-
-        <button type="submit" class="w-full bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] font-black uppercase text-xs tracking-[0.2em] py-5 rounded-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl">
-          Enviar Mensaje
-        </button>
-      </form>
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <!-- Mapa Reutilizado -->
     <Location />
-    
   </main>
 </Layout>

@@ -1,85 +1,110 @@
 ---
 import { Image } from "astro:assets";
-import logoImg from "../assets/img/logo.webp";
-import Button from "./Button.astro";
-
-// 1. Limpiamos la subcarpeta base de GitHub Pages de forma segura
-const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
-
-// 2. Dejamos las URLs ya calculadas aquí arriba en JavaScript
-const logoHref = `${baseUrl}/`;
-
+import logoImg from "../assets/img/logo.webp"; // Asegúrate de tener esta imagen
+// Definimos los links para facilitar el mantenimiento
 const navLinks = [
-  { name: "Inicio", href: `${baseUrl}/` },
-  { name: "Menú", href: `${baseUrl}/menu/` },
-  { name: "Nosotros", href: `${baseUrl}/nosotros/` },
-  { name: "Contacto", href: `${baseUrl}/contacto/` },
+  { name: "Inicio", href: "/" },
+  { name: "Menú", href: "menu" },
+  { name: "Nosotros", href: "nosotros" },
+  { name: "Contacto", href: "contacto" },
 ];
+
+import Button from "./Button.astro"; // Reutilizamos tu botón anterior
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-[var(--color-surface)] shadow-md border-b border-[var(--color-primary-light)]/30">
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-[var(--color-surface)] shadow-md border-b border-[var(--color-primary-light)]/30"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
-      
-      <!-- Logo -->
+      <!-- Solo cambia esta parte dentro del header -->
       <div class="flex-shrink-0 flex items-center">
-        <a href={logoHref} class="group flex items-center gap-2">
-          <div class="w-10 h-10 bg-[var(--color-primary)] rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 overflow-hidden p-1.5">
+        <a href="/" class="group flex items-center gap-2">
+          <!-- Mantenemos tu cuadrito verde exacto -->
+          <div
+            class="w-10 h-10 bg-[var(--color-primary)] rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 overflow-hidden p-1.5"
+          >
+            <!-- Colocamos la imagen dentro -->
             <Image
               src={logoImg}
               alt="Logo"
               class="w-full h-full object-contain brightness-0 invert"
             />
           </div>
-          <span class="font-bold text-2xl tracking-tight text-[var(--color-text)]">
+          <span
+            class="font-bold text-2xl tracking-tight text-[var(--color-text)]"
+          >
             Café<span class="text-[var(--color-primary)]">Artesano</span>
           </span>
         </a>
       </div>
 
-      <!-- Navegación Escritorio -->
       <nav class="hidden md:flex items-center space-x-8">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="text-[var(--color-text)] font-medium hover:text-[var(--color-primary)] transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-[var(--color-primary)] after:left-0 after:-bottom-1 hover:after:w-full after:transition-all after:duration-300"
-          >
-            {link.name}
-          </a>
-        ))}
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-[var(--color-text)] font-medium hover:text-[var(--color-primary)] transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-[var(--color-primary)] after:left-0 after:-bottom-1 hover:after:w-full after:transition-all after:duration-300"
+            >
+              {link.name}
+            </a>
+          ))
+        }
 
         <Button text="Reservar" variant="primary" class="text-sm px-5 py-2" />
       </nav>
 
-      <!-- Botón Menú Móvil -->
       <div class="md:hidden flex items-center">
         <button
           id="mobile-menu-button"
           class="text-[var(--color-text)] hover:text-[var(--color-primary)] focus:outline-none p-2"
         >
-          <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              id="menu-icon"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+            <path
+              id="close-icon"
+              class="hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
-
     </div>
   </div>
 
-  <!-- Menú Desplegable Móvil -->
-  <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-primary-light)]/20 animate-fade-in-down">
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-[var(--color-surface)] border-t border-[var(--color-primary-light)]/20 animate-fade-in-down"
+  >
     <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="block px-3 py-3 text-base font-medium text-[var(--color-text)] hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] rounded-lg transition-all"
-        >
-          {link.name}
-        </a>
-      ))}
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block px-3 py-3 text-base font-medium text-[var(--color-text)] hover:bg-[var(--color-bg)] hover:text-[var(--color-primary)] rounded-lg transition-all"
+          >
+            {link.name}
+          </a>
+        ))
+      }
       <div class="pt-4">
-        <Button text="Reservar" variant="primary" class="w-full justify-center" />
+        <Button
+          text="Reservar"
+          variant="primary"
+          class="w-full justify-center"
+        />
       </div>
     </div>
   </div>
