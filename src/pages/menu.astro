@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import HeroMenu from "../components/hero-menu.astro";
+import { getCollection } from 'astro:content';
+// Importamos el tipo de imagen de Astro para que sea estricto
+import type { ImageMetadata } from 'astro'; 
+
+// 1. Definimos la interfaz que usabas (ahora con ImageMetadata para la imagen)
+interface Product {
+  name: string;
+  price: string;
+  description: string;
+  image: ImageMetadata; // <-- Cambiado de any a ImageMetadata
+  tag?: string;        // <-- Opcional con el signo ?
+  notes: string[];
+  intensity: number;
+  category: string;
+}
+
+const allProducts = await getCollection('products');
+
+// 2. Le decimos a TypeScript que p.data cumple con nuestra interfaz Product
+const products: Product[] = allProducts.map((p) => p.data as Product);
+
+const categories = ["Todo", "Café", "Comida", "Bebidas", "Cervezas"];
+---
+
+<Layout title="Menú | Café Artesano">
+  <main class="bg-[var(--color-surface)] min-h-screen">
+    
+    <HeroMenu />
+
+    <!-- Navegación de Filtros (Sticky) -->
+    <nav class="sticky top-0 z-50 bg-[var(--color-surface)]/90 backdrop-blur-md border-b border-[var(--color-primary-dark)]/5">
+      <div class="max-w-5xl mx-auto flex gap-8 md:gap-12 overflow-x-auto py-6 px-6 no-scrollbar justify-start md:justify-center items-center">
+        {categories.map((cat) => (
+          <button 
+            data-filter={cat}
+            class="filter-btn group relative whitespace-nowrap text-sm font-bold uppercase tracking-widest text-[var(--color-primary-dark)]/40 hover:text-[var(--color-primary-dark)] transition-colors"
+          >
+            {cat}
+            <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all group-data-[active=true]:w-full"></span>
+          </button>
+        ))}
+      </div>
+    </nav>
+
+    <!-- Contenedor Dinámico -->
+    <div id="menu-wrapper" class="max-w-7xl mx-auto px-6 py-20 space-y-32">
+      {categories.filter(c => c !== "Todo").map((category) => (
+        <section data-category={category} class="menu-section scroll-mt-32">
+          <div class="flex justify-between items-end mb-12 border-b border-[var(--color-primary-dark)]/10 pb-6">
+            <div>
+              <h2 class="text-4xl font-bold text-[var(--color-primary-dark)] tracking-tight">{category}</h2>
+              <p class="text-[var(--color-primary-dark)]/50 text-sm mt-2 font-medium uppercase tracking-widest">Excelencia en cada ingrediente</p>
+            </div>
+            
+            <button 
+              class="view-more-btn group flex items-center gap-2 text-[var(--color-primary)] font-bold text-xs uppercase tracking-widest"
+              data-target={category}
+            >
+              Ver carta completa
+              <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </div>
+
+          <!-- Grid de Productos (Añadida la clase product-grid para el JS) -->
+          <div class="product-grid grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            {products.filter(p => p.category === category).map(product => (
+              <div class="product-item">
+                <ProductCard {...product} />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const sections = document.querySelectorAll<HTMLElement>('.menu-section');
+  const viewMoreBtns = document.querySelectorAll<HTMLButtonElement>('.view-more-btn');
+
+  function updateDisplay(filter: string) {
+    filterBtns.forEach(btn => {
+      btn.dataset.active = (btn.dataset.filter === filter).toString();
+    });
+
+    sections.forEach(section => {
+      const category = section.dataset.category;
+      const grid = section.querySelector('.product-grid');
+      const items = grid?.querySelectorAll<HTMLElement>('.product-item');
+      const viewMore = section.querySelector<HTMLElement>('.view-more-btn');
+
+      if (filter === 'Todo') {
+        section.classList.remove('hidden');
+        if (viewMore) viewMore.classList.remove('hidden');
+        
+        items?.forEach((item, index) => {
+          item.classList.toggle('hidden', index > 3); 
+        });
+      } else {
+        const isSelected = category === filter;
+        section.classList.toggle('hidden', !isSelected);
+        if (viewMore) viewMore.classList.add('hidden');
+        
+        items?.forEach(item => item.classList.remove('hidden'));
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'Todo';
+      updateDisplay(filter);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  viewMoreBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target || 'Todo';
+      updateDisplay(target);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  updateDisplay('Todo');
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  .product-item {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

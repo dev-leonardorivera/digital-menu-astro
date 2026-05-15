@@ -1,0 +1,33 @@
+---
+// src/components/PhotoGrid.astro
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+// 1. Definimos la interfaz usando ImageMetadata para que Astro pueda procesarlas
+interface ImageItem {
+  src: ImageMetadata; // Cambio clave: de string a ImageMetadata
+  alt: string;
+}
+
+// 2. Definimos las Props del componente
+interface Props {
+  images: ImageItem[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  {
+    images.map((img: ImageItem) => (
+      <div class="aspect-square overflow-hidden rounded-2xl bg-[var(--color-primary-dark)]/5 ">
+        <Image
+          src={img.src}
+          alt={img.alt}
+          class="w-full h-full object-cover "
+          quality="medium"
+        />
+      </div>
+    ))
+  }
+</div>

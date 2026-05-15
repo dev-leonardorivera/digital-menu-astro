@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import aboutImg from "../assets/img/about-cafe.png"; // Asegúrate de tener esta imagen
+---
+
+<section class="py-24 bg-[var(--color-bg)] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+      <!-- Imagen Corregida -->
+      <div class="w-full md:w-1/2 relative group">
+        <div class="relative rounded-[2rem] overflow-hidden shadow-2xl">
+          <Image
+            src={aboutImg}
+            alt="Nuestro barista trabajando"
+            class="w-full aspect-square md:aspect-auto md:h-[500px] object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+          />
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="w-full md:w-1/2">
+        <span
+          class="text-[var(--color-accent)] font-medium tracking-widest uppercase text-xs mb-4 block"
+          >Desde 1977</span
+        >
+        <h2
+          class="text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-6 leading-tight"
+        >
+          Un rincón donde el <span
+            class="text-[var(--color-primary)] italic font-serif"
+            >tiempo se detiene</span
+          >
+        </h2>
+        <p class="text-[var(--color-text)]/80 mb-8 leading-relaxed text-lg">
+          No solo servimos café; cultivamos momentos. Lo que comenzó como un
+          pequeño tostadero familiar se ha convertido en el refugio de los
+          amantes de los aromas genuinos y las conversaciones sin prisa.
+        </p>
+
+        <!-- Enlaces Claros e Intuitivos (Mobile Friendly) -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-10">
+          <a
+            href="/nosotros"
+            class="inline-flex items-center justify-center gap-2 bg-[var(--color-primary-dark)] text-[var(--color-surface)] px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[var(--color-primary)] transition-colors shadow-lg shadow-[var(--color-primary-dark)]/20"
+          >
+            Nuestra Historia
+          </a>
+          <a
+            href="/menu"
+            class="inline-flex items-center justify-center gap-2 border border-[var(--color-primary-light)]/50 text-[var(--color-text)] px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors"
+          >
+            Ver la Carta
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

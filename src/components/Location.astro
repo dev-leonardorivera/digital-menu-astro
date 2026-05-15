@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets';
+import mapPlaceholder from '../assets/img/mapa-placeholder.jpg';
+import { Icon } from "astro-icon/components";
+---
+<section class="py-0 bg-[var(--color-surface)]">
+  <div class="flex flex-col md:flex-row h-auto md:h-[600px]">
+    
+    <!-- Info -->
+    <div class="w-full md:w-1/3 p-12 md:p-20 flex flex-col justify-center">
+      <h2 class="text-3xl font-bold text-[var(--color-text)] mb-8">Visítanos</h2>
+      <div class="space-y-8">
+        <div>
+          <h4 class="text-[var(--color-primary)] font-bold uppercase text-xs tracking-widest mb-2">Ubicación</h4>
+          <p class="text-[var(--color-text)]/80">Calle de la Aroma 123,<br/>Distrito Artesanal, Ciudad</p>
+        </div>
+        <div>
+          <h4 class="text-[var(--color-primary)] font-bold uppercase text-xs tracking-widest mb-2">Horarios</h4>
+          <p class="text-[var(--color-text)]/80">Lunes a Viernes: 08:00 — 20:00</p>
+          <p class="text-[var(--color-text)]/80">Sábados y Domingos: 09:00 — 21:00</p>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="inline-block bg-[var(--color-primary-dark)] text-white px-8 py-3 rounded-full hover:bg-[var(--color-primary)] transition-all text-sm font-bold">
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+
+    <!-- Contenedor del Mapa -->
+    <div id="map-wrapper" class="w-full md:w-2/3 h-[400px] md:h-full relative overflow-hidden bg-black">
+      
+      <!-- ESTADO 1: Bloqueado (SOLO UNO) -->
+      <div id="map-blocked" class="absolute inset-0 z-20 flex flex-col items-center justify-center p-12 text-center transition-all duration-500">
+        
+        <div class="absolute inset-0 z-0">
+          <Image 
+            src={mapPlaceholder} 
+            alt="Fondo de mapa" 
+            class="w-full h-full object-cover opacity-30 grayscale"
+          />
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-center">
+          <div class="w-16 h-16 bg-[var(--color-primary-light)]/20 rounded-full flex items-center justify-center mb-6 text-[var(--color-primary-light)] border border-[var(--color-primary-light)]/30">
+            <Icon name="map" class="w-8 h-8" />
+          </div>
+          
+          <p class="text-white text-sm font-medium mb-8 max-w-xs leading-relaxed">
+            Para interactuar con el mapa, necesitamos que aceptes las cookies de Google Maps.
+          </p>
+
+          <!-- BOTÓN CON DISEÑO CORREGIDO -->
+          <button 
+            id="btn-unlock-map" 
+            class="bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] px-8 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] hover:bg-white hover:scale-105 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.5)] active:scale-95"
+          >
+            Activar Mapa Interactivo
+          </button>
+        </div>
+      </div>
+
+      <!-- ESTADO 2: El contenedor del Iframe -->
+      <div id="map-active" class="absolute inset-0 w-full h-full z-10"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const mapBlocked = document.getElementById('map-blocked');
+  const mapActive = document.getElementById('map-active');
+  const unlockBtn = document.getElementById('btn-unlock-map');
+
+  const mapSource = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.063920257523!2d-122.4194155!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ2JzI5LjciTiAxMjLCsDI1JzA5LjkiVw!5e0!3m2!1ses!2ses!4v1625500000000!5m2!1ses!2ses";
+
+  function loadMap() {
+    if (mapActive && mapBlocked) {
+      mapActive.innerHTML = `<iframe 
+        src="${mapSource}" 
+        class="w-full h-full border-0 grayscale-[0.5] contrast-[1.1] hover:grayscale-0 transition-all duration-700" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>`;
+      mapBlocked.style.opacity = '0';
+      setTimeout(() => {
+        mapBlocked.style.display = 'none';
+      }, 500);
+    }
+  }
+
+  if (localStorage.getItem('cookies-accepted') === 'true') {
+    loadMap();
+  }
+
+  unlockBtn?.addEventListener('click', () => {
+    localStorage.setItem('cookies-accepted', 'true');
+    window.dispatchEvent(new Event('storage'));
+    loadMap();
+  });
+
+  window.addEventListener('storage', () => {
+    if (localStorage.getItem('cookies-accepted') === 'true') {
+      loadMap();
+    }
+  });
+</script>

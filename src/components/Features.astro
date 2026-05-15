@@ -1,0 +1,67 @@
+---
+import Button from './Button.astro';
+import ProductCard from './ProductCard.astro'; // Importamos el átomo
+
+// Tus imágenes
+import flarEspecial from '../assets/img/img-Flat-Especial.jpg';
+import ColdBrewVainilla from '../assets/img/img-Cold-Brew-Vainilla.jpg';
+import CaramelMacchiato from '../assets/img/img-Caramel-Macchiato.webp';
+
+const products = [
+  {
+    name: "Flat White Especial",
+    price: "3.50€",
+    description: "Doble shot de espresso con una capa fina de leche vaporizada sedosa y microespuma perfecta.",
+    image: flarEspecial,
+    tag: "Popular",
+    notes: ["Nuez", "Caramelo", "Cuerpo Denso"]
+  },
+  {
+    name: "Caramel Macchiato",
+    price: "4.20€",
+    description: "Vainilla orgánica, leche manchada con espresso y un toque de caramelo elaborado en casa.",
+    image: CaramelMacchiato,
+    tag: "Dulce",
+    notes: ["Vainilla", "Toffee", "Suave"]
+  },
+  {
+    name: "Cold Brew Vainilla",
+    price: "4.80€",
+    description: "Café infusionado en frío por 18 horas, resultando en una baja acidez y máxima dulzura.",
+    image: ColdBrewVainilla,
+    tag: "Refrescante",
+    notes: ["Frutos Rojos", "Cacao", "Frío"]
+  }
+];
+---
+
+<section class="py-24 bg-[var(--color-surface)]">
+  <div class="max-w-7xl mx-auto px-4">
+    
+    <div class="text-center mb-16">
+      <span class="text-[var(--color-accent)] font-medium tracking-[0.2em] uppercase text-sm">
+        Selección cuidadosamente elegida
+      </span>
+      <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-text)] mt-4 mb-6">
+        Nuestras Especialidades
+      </h2>
+      <p class="text-[var(--color-text)]/60 max-w-2xl mx-auto italic">
+        "Momentos especiales a través de una colección de cafés destacados por nuestros baristas."
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+  {products.map(product => (
+    <ProductCard 
+      {...product} 
+      intensity={4} 
+      notes={["Chocolate Negro", "Frutos Secos", "Cuerpo Denso"]}
+    />
+  ))}
+</div>
+
+    <div class="mt-16 text-center">
+      <Button text="Ver menú completo" variant="primary" class="px-12 py-4" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  text: string;
+  variant?: 'primary' | 'outline' | 'accent';
+  class?: string;
+  [x: string]: any; // Para capturar otros atributos como type, onclick, etc.
+}
+
+const { text, variant = 'primary', class: className, ...rest } = Astro.props;
+
+// Mapeo de estilos según la variante
+const variants = {
+  primary: "bg-[var(--color-primary)] text-[var(--color-surface)] hover:bg-[var(--color-primary-dark)]",
+  outline: "border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-surface)]",
+  accent: "bg-[var(--color-accent)] text-white hover:opacity-90",
+};
+---
+
+<button
+  class:list={[
+    "px-6 py-2.5 rounded-full font-medium transition-all duration-300 cursor-pointer active:scale-95 shadow-sm",
+    variants[variant],
+    className
+  ]}
+  {...rest}
+>
+  {text}
+</button>
