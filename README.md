@@ -19,7 +19,8 @@ https://TU-USUARIO.github.io/TU-REPOSITORIO/
 
 ## 📸 Vista Previa
 
-![Vista previa del proyecto](./public/preview.png)
+![Vista previa del proyecto](./public/preview_01.png)
+![Vista previa del proyecto](./public/preview_02.png)
 
 ---
 
@@ -52,13 +53,7 @@ https://TU-USUARIO.github.io/TU-REPOSITORIO/
 Clona el repositorio:
 
 ```bash
-git clone https://github.com/TU-USUARIO/TU-REPOSITORIO.git
-```
-
-Accede a la carpeta del proyecto:
-
-```bash
-cd TU-REPOSITORIO
+git clone https://github.com/dev-leonardorivera/digital-menu-astro.git
 ```
 
 Instala las dependencias:
@@ -124,7 +119,7 @@ Este proyecto está bajo licencia MIT.
 Desarrollado por Leonardo Rivera.
 
 GitHub:  
-https://github.com/TU-USUARIO
+https://github.com/dev-leonardorivera
 
 ---
 
