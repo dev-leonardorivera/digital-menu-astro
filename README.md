@@ -1,46 +1,134 @@
-# Astro Starter Kit: Basics
+# ☕ Carta Digital para Cafeterías y Bares
 
-```sh
-npm create astro@latest -- --template basics
+Web moderna de menú digital e interactivo para cafeterías, bares y pequeños restaurantes, desarrollada con Astro.
+
+Este proyecto está enfocado en ofrecer una experiencia rápida, visual y responsive donde los clientes puedan consultar la carta desde el móvil mediante códigos QR o enlaces directos.
+
+Diseñado como un proyecto frontend real y parte de mi portfolio público como desarrollador web.
+
+---
+
+## 🚀 Demo Online
+
+[![Live Demo](https://img.shields.io/badge/Ver-Demo-success?style=for-the-badge)](https://TU-USUARIO.github.io/TU-REPOSITORIO/)
+
+🔗 URL Demo:  
+https://TU-USUARIO.github.io/TU-REPOSITORIO/
+
+---
+
+## 📸 Vista Previa
+
+![Vista previa del proyecto](./public/preview.png)
+
+---
+
+## ✨ Características
+
+- 📱 Diseño completamente responsive
+- ⚡ Alto rendimiento gracias a Astro
+- 🍔 Menú digital
+- 🎨 Interfaz moderna y limpia
+- 🔍 Estructura optimizada para SEO
+- 🧾 Categorías de productos
+- 🖼️ Imágenes y descripciones
+- 📲 Experiencia mobile-first
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- Astro
+- HTML5
+- CSS3
+- Tailwind
+- TypeScript
+- Responsive Design
+
+---
+
+## 📦 Instalación
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/TU-USUARIO/TU-REPOSITORIO.git
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Accede a la carpeta del proyecto:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+cd TU-REPOSITORIO
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Instala las dependencias:
 
-## 🧞 Commands
+```bash
+npm install
+```
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## ▶️ Desarrollo
 
-## 👀 Want to learn more?
+Inicia el entorno de desarrollo:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npx astro dev
+```
+
+---
+
+## 🏗️ Build de Producción
+
+Generar build:
+
+```bash
+npm run build
+```
+
+Previsualizar build:
+
+```bash
+npm run preview
+```
+
+---
+
+## 🎯 Objetivos del Proyecto
+
+- Crear una aplicación frontend moderna usando Astro
+- Construir una solución real para negocios locales
+- Mostrar una estructura limpia y profesional
+
+---
+
+## 📱 Diseño Responsive
+
+La interfaz está optimizada para:
+
+- 📱 Móviles
+- 💻 Escritorio
+- 📲 Tablets
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo licencia MIT.
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por Leonardo Rivera.
+
+GitHub:  
+https://github.com/TU-USUARIO
+
+---
+
+## ⭐ Apoya el Proyecto
+
+Si te gusta este proyecto puedes darle una estrella en GitHub ⭐
+
